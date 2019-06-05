@@ -4,14 +4,18 @@ STOP_WORDS = [
     'will', 'with'
 ]
 
-#import re
+file = input()
 
-#def split_string(file):
-    #"""Read in `file` and split strings in that file."""
+import re
 
-#def print_word_freq(file):
-    #"""Read in `file` and print out the frequency of words in that file."""
-    #pass
+def clean_text(zext):
+    zext = zext.lower()
+    zext = zext.re.sub(r'[a-z ]', '')
+    return zext
+
+def print_word_freq(file):
+    """Read in `file` and print out the frequency of words in that file."""
+    pass
 
 #with open(file) as chosen_file:
    # for line in f:
@@ -20,25 +24,32 @@ STOP_WORDS = [
     #len(chosen_file.readline())
 
 with open(file) as chosen_file:
-    chosen_file = print(repr(file.readline()))
+    print(repr(f.readline()))
+
+#f = open('words.txt', 'r')
+
+#with open('words.txt','r') as f:
+    #for line in f:
+        #for word in line.split():
+           #print(word)   
 
 #with open('flights.txt', 'r') as f:
     #for line in f:
         #y = line.split()
         #print(y)
 
-#if __name__ == "__main__":
-    #import argparse
-    #from pathlib import Path
+if __name__ == "__main__":
+    import argparse
+    from pathlib import Path
 
-    #parser = argparse.ArgumentParser(
-        #description='Get the word frequency in a text file.')
-    #parser.add_argument('file', help='file to read')
-    #args = parser.parse_args()
+    parser = argparse.ArgumentParser(
+        description='Get the word frequency in a text file.')
+    parser.add_argument('file', help='file to read')
+    args = parser.parse_args()
 
-    #file = Path(args.file)
-    #if file.is_file():
-        #print_word_freq(file)
-    #else:
-        #print(f"{file} does not exist!")
-        #exit(1)
+    file = Path(args.file)
+    if file.is_file():
+        print_word_freq(file)
+    else:
+        print(f"{file} does not exist!")
+        exit(1)
