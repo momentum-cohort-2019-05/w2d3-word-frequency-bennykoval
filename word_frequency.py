@@ -4,39 +4,25 @@ STOP_WORDS = [
     'will', 'with'
 ]
 
-file = input()
-
 import re
 
-def clean_text(zext):
-    zext = zext.lower()
-    zext = zext.re.sub(r'[a-z ]', '')
-    return zext
+def clean_text(text):
+    """Purge text of casing, special characters"""
+    text = (str(text)).lower()
+    text = re.sub(r'[^a-z ]', '', text)
+    text = re.sub('\\n', '', text)
+    return text
+
+def split_text(text):
+    """Split string into words"""
+    text = (str(text)).split(" ")
+    return text
 
 def print_word_freq(file):
     """Read in `file` and print out the frequency of words in that file."""
-    pass
-
-#with open(file) as chosen_file:
-   # for line in f:
-    #string_split = line.split()
-    #print(repr(file.readline()))
-    #len(chosen_file.readline())
-
-with open(file) as chosen_file:
-    print(repr(f.readline()))
-
-#f = open('words.txt', 'r')
-
-#with open('words.txt','r') as f:
-    #for line in f:
-        #for word in line.split():
-           #print(word)   
-
-#with open('flights.txt', 'r') as f:
-    #for line in f:
-        #y = line.split()
-        #print(y)
+    clean_text(file)
+    split_text(file)
+    return
 
 if __name__ == "__main__":
     import argparse
@@ -53,3 +39,9 @@ if __name__ == "__main__":
     else:
         print(f"{file} does not exist!")
         exit(1)
+
+with open(file) as chosen_file:
+    #print_word_freq(chosen_file.readline())
+    print(repr(chosen_file.readline()))
+    #with open(file) as source_file:
+    #source_str = source_file.read
