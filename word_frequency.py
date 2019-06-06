@@ -6,11 +6,18 @@ STOP_WORDS = [
 
 import re
 
+def block_words(text):
+    """Delete overly common link words"""
+    if text in STOP_WORDS:
+        return ''
+    else:
+        return text
+
 def clean_text(text):
     """Purge text of casing, special characters"""
     text = (str(text)).lower()
     text = re.sub(r'[^a-z ]', '', text)
-    text = re.sub('\\n', '', text)
+    text = text.replace('\n', '')
     return text
 
 def split_text(text):
@@ -20,9 +27,10 @@ def split_text(text):
 
 def print_word_freq(file):
     """Read in `file` and print out the frequency of words in that file."""
-    clean_text(file)
-    split_text(file)
-    return
+    x = clean_text(file)
+    y = split_text(x)
+    z = block_words(y)
+    return z
 
 if __name__ == "__main__":
     import argparse
@@ -41,7 +49,5 @@ if __name__ == "__main__":
         exit(1)
 
 with open(file) as chosen_file:
-    #print_word_freq(chosen_file.readline())
-    print(repr(chosen_file.readline()))
-    #with open(file) as source_file:
-    #source_str = source_file.read
+    x = print_word_freq(chosen_file.read())
+    print(x)
