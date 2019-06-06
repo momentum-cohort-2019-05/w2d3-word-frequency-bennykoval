@@ -1,17 +1,10 @@
-STOP_WORDS = [
+stop_words = [
     'a', 'an', 'and', 'are', 'as', 'at', 'be', 'by', 'for', 'from', 'has', 'he',
     'i', 'in', 'is', 'it', 'its', 'of', 'on', 'that', 'the', 'to', 'were',
     'will', 'with'
 ]
 
 import re
-
-def block_words(text):
-    """Delete overly common link words"""
-    if text in STOP_WORDS:
-        return ''
-    else:
-        return text
 
 def clean_text(text):
     """Purge text of casing, special characters"""
@@ -24,6 +17,14 @@ def split_text(text):
     """Split string into words"""
     text = (str(text)).split(" ")
     return text
+
+def block_words(text):
+    """Delete overly common link words"""
+    new_list = []
+    for i in text:
+        if i not in stop_words:
+            new_list.append(i)
+    return new_list
 
 def print_word_freq(file):
     """Read in `file` and print out the frequency of words in that file."""
@@ -49,5 +50,5 @@ if __name__ == "__main__":
         exit(1)
 
 with open(file) as chosen_file:
-    x = print_word_freq(chosen_file.read())
-    print(x)
+    z = print_word_freq(chosen_file.read())
+    print(z)
