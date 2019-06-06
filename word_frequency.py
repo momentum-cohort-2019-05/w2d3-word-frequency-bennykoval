@@ -8,10 +8,10 @@ import re
 
 def clean_text(text):
     """Purge text of casing, special characters"""
-    text = (str(text)).lower()
-    text = re.sub(r'[^a-z ]', '', text)
-    text = text.replace('\n', '')
-    return text
+    str_text = (str(text)).lower()
+    str_text = re.sub(r'[^a-z ]', '', str_text)
+    str_text = str_text.replace('\n', '')
+    return str_text
 
 def split_text(text):
     """Split string into words"""
@@ -28,10 +28,10 @@ def block_words(text):
 
 def print_word_freq(file):
     """Read in `file` and print out the frequency of words in that file."""
-    x = clean_text(file)
-    y = split_text(x)
-    z = block_words(y)
-    return z
+    cleanest_text = clean_text(file)
+    splittest_text = split_text(cleanest_text)
+    blockiest_text = block_words(splittest_text)
+    return blockiest_text
 
 if __name__ == "__main__":
     import argparse
@@ -50,5 +50,5 @@ if __name__ == "__main__":
         exit(1)
 
 with open(file) as chosen_file:
-    z = print_word_freq(chosen_file.read())
-    print(z)
+    blockiest_text = print_word_freq(chosen_file.read())
+    print(blockiest_text)
