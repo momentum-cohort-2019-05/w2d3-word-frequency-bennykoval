@@ -9,13 +9,13 @@ import re
 def clean_text(text):
     """Purge text of casing, special characters"""
     str_text = (str(text)).lower()
+    str_text = str_text.replace('\n', ' ')
     str_text = re.sub(r'[^a-z ]', '', str_text)
-    str_text = str_text.replace('\n', '')
     return str_text
 
 def split_text(text):
     """Split string into words"""
-    ls_text = (str(text)).split(" ")
+    ls_text = (str(text)).split(' ')
     return ls_text
 
 def block_words(word_list):
@@ -25,6 +25,12 @@ def block_words(word_list):
         if word not in stop_words:
             new_list.append(word)
     return new_list
+
+def dict_sort(word_dict):
+    """Sort and display by key"""
+    sorted_dict = sorted(word_dict.items(), key=lambda x: x[-1], reverse=True)
+    return sorted_dict
+
 
 def get_dict(word_list):
     word_dict = {}
@@ -41,7 +47,8 @@ def print_word_freq(file):
     split_ls = split_text(cleanest_text)
     block_ls = block_words(split_ls)
     word_freq = get_dict(block_ls)
-    return word_freq
+    sorted_dict = dict_sort(word_freq)
+    return sorted_dict
 
 if __name__ == "__main__":
     import argparse
@@ -61,4 +68,5 @@ if __name__ == "__main__":
 
 with open(file) as chosen_file:
     word_freq = print_word_freq(chosen_file.read())
-    print(word_freq)
+    for word, freq in word_freq[:10]:
+        print(word, '|', freq)
