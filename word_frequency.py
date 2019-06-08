@@ -69,4 +69,4 @@ if __name__ == "__main__":
 with open(file) as chosen_file:
     word_freq = print_word_freq(chosen_file.read())
     for word, freq in word_freq[:10]:
-        print(word, '|', freq)
+        print(word, '|', freq, "*" * freq)
