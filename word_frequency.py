@@ -1,7 +1,7 @@
 STOP_WORDS = [
     'a', 'an', 'and', 'are', 'as', 'at', 'be', 'by', 'for', 'from', 'has', 'he',
     'i', 'in', 'is', 'it', 'its', 'of', 'on', 'that', 'the', 'to', 'were',
-    'will', 'with', 'they', 'which', 'this', 'their', 'but', 'was'
+    'will', 'with', 'they', 'which', 'this', 'their', 'but', 'was', 'rt'
 ]
 
 import re
