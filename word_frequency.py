@@ -1,7 +1,7 @@
-stop_words = [
+STOP_WORDS = [
     'a', 'an', 'and', 'are', 'as', 'at', 'be', 'by', 'for', 'from', 'has', 'he',
     'i', 'in', 'is', 'it', 'its', 'of', 'on', 'that', 'the', 'to', 'were',
-    'will', 'with', 'they', 'which', 'this', 'their', 'but', 'was', '   '
+    'will', 'with', 'they', 'which', 'this', 'their', 'but', 'was'
 ]
 
 import re
@@ -22,7 +22,7 @@ def block_words(word_list):
     """Delete overly common link words"""
     new_list = []
     for word in word_list:
-        if word not in stop_words:
+        if word not in STOP_WORDS:
             new_list.append(word)
     return new_list
 
